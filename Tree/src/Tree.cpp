@@ -13,59 +13,88 @@ Tree::Tree()
 void Tree::inserir(int valor)
 {
     No * no = new No;
-    if(qnt == 0)
-    {
+    if(qnt == 0) {
         no->dado = valor;
         no->fDir = NULL;
         no->fEsq = NULL;
+        no->pai  = NULL;
         topo = no;
-    }
-    else
-    {
+        qnt++;
+    } else {
         No * tmp = new No;
         tmp = topo;
-        while(1)
-        {
-            if(valor == tmp->dado)
-            {
+        while(1) {
+            if(valor == tmp->dado) {
                 cout << "\n esse valor já existe na arvore! \n";
-                qnt--;
                 break;
-            }
-            else if(tmp->fDir == NULL && tmp->fEsq == NULL)
-            {
-                if(valor < tmp->dado)
-                {
+            } else {
+                if(valor < tmp->dado && tmp->fEsq == NULL) {
                     tmp->fEsq = no;
                     no->dado = valor;
                     no->fDir = NULL;
                     no->fEsq = NULL;
-                }
-                else
-                {
+                    no->pai  = tmp;
+                    qnt++;
+                    break;
+                } else if(valor > tmp->dado && tmp->fDir == NULL) {
                     tmp->fDir = no;
                     no->dado = valor;
                     no->fDir = NULL;
                     no->fEsq = NULL;
+                    no->pai  = tmp;
+                    qnt++;
+                    break;
                 }
-                break;
-            }
-            else if(valor < tmp->dado)
-            {
-                tmp = tmp->fEsq;
-            }
-            else if(valor > tmp->dado)
-            {
-                tmp = tmp->fDir;
+                else if(valor < tmp->dado) {
+                    tmp = tmp->fEsq;
+                } else if(valor > tmp->dado) {
+                    tmp = tmp->fDir;
+                }
             }
         }
     }
-    cout << topo->dado;
-    qnt++;
 }
 
-void Tree::remover()
+void Tree::remover(int valor)
 {
+    // busca do nó a ser removido
+    No *tmp = new No;
+    tmp = topo;
+    while(1) {
+        if(valor < tmp->dado) {
+            if(tmp->fEsq != NULL) {
+                tmp = tmp->fEsq;
+            } else {
+                cout << "\n valor nao encontrado. ";
+                break;
+            }
+
+        } else if(valor > tmp->dado) {
+
+            if(tmp = tmp->fDir != NULL) {
+                tmp = tmp->fDir;
+            } else {
+                cout << "\n valor nao encontrado. ";
+                break;
+            }
+        } else if(valor == tmp->dado) {
+            // tmp é o nó a ser removido
+            break;
+        }
+
+    }
+    No * aRemover = new No;
+    aRemover = tmp;
+
+    // o nó é uma folha e nao tem filhos
+    if( ((aRemover->pai)->fDir)!= NULL ){}
+    (aRemover->pai)->
+
+    // o nó tem um filho apenas
+
+
+    // o nó tem dois filhos
+
 }
 
 void Tree::apresentar()

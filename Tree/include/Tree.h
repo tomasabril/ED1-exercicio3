@@ -6,6 +6,7 @@ struct No{
     //No * pai;
     No * fDir;
     No * fEsq;
+    No * pai;
 };
 
 class Tree
@@ -18,7 +19,7 @@ class Tree
 
         Tree();
         void inserir(int valor);
-        void remover();
+        void remover(int valor);
         void apresentar();
         int  lerProfundidade();
     protected:
