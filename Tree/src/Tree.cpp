@@ -60,19 +60,22 @@ void Tree::remover(int valor)
     // busca do nó a ser removido
     No *tmp = new No;
     tmp = topo;
+    bool direcao;   // 0 é esquerda
+                    // 1 é direita;
     while(1) {
         if(valor < tmp->dado) {
             if(tmp->fEsq != NULL) {
                 tmp = tmp->fEsq;
+                direcao = 0;
             } else {
                 cout << "\n valor nao encontrado. ";
                 break;
             }
 
         } else if(valor > tmp->dado) {
-
             if(tmp = tmp->fDir != NULL) {
                 tmp = tmp->fDir;
+                direcao = 1;
             } else {
                 cout << "\n valor nao encontrado. ";
                 break;
@@ -83,18 +86,37 @@ void Tree::remover(int valor)
         }
 
     }
-    No * aRemover = new No;
-    aRemover = tmp;
+    //No * aRemover = new No;
+    //aRemover = tmp;
 
     // o nó é uma folha e nao tem filhos
-    if( ((aRemover->pai)->fDir)!= NULL ){}
-    (aRemover->pai)->
+    if(tmp->fDir == NULL && tmp->fEsq == NULL){
+        if(tmp->pai == NULL) {  // remover o topo
+            delete tmp;
+            qnt--;
+        }else {
+            if(direcao == 0) {
+                (tmp->pai)->fEsq == NULL;
+                delete tmp;
+                qnt--;
+            }else{
+                (tmp->pai)->fDir == NULL;
+                delete tmp;
+                qnt--;
+            }
+        }
+
+    }
 
     // o nó tem um filho apenas
+    else if(){
 
+    }
 
     // o nó tem dois filhos
+    else if(){
 
+    }
 }
 
 void Tree::apresentar()
