@@ -44,8 +44,7 @@ void Tree::inserir(int valor)
                     no->pai  = tmp;
                     qnt++;
                     break;
-                }
-                else if(valor < tmp->dado) {
+                } else if(valor < tmp->dado) {
                     tmp = tmp->fEsq;
                 } else if(valor > tmp->dado) {
                     tmp = tmp->fDir;
@@ -60,8 +59,8 @@ void Tree::remover(int valor)
     // busca do nó a ser removido
     No *tmp = new No;
     tmp = topo;
-    bool direcao;   // 0 é esquerda
-                    // 1 é direita;
+    bool direcao;   // 0 é esquerda // 1 é direita;
+
     while(1) {
         if(valor < tmp->dado) {
             if(tmp->fEsq != NULL) {
@@ -73,7 +72,7 @@ void Tree::remover(int valor)
             }
 
         } else if(valor > tmp->dado) {
-            if(tmp = tmp->fDir != NULL) {
+            if(tmp->fDir != NULL) {
                 tmp = tmp->fDir;
                 direcao = 1;
             } else {
@@ -90,16 +89,16 @@ void Tree::remover(int valor)
     //aRemover = tmp;
 
     // o nó é uma folha e nao tem filhos
-    if(tmp->fDir == NULL && tmp->fEsq == NULL){
+    if(tmp->fDir == NULL && tmp->fEsq == NULL) {
         if(tmp->pai == NULL) {  // remover o topo
             delete tmp;
             qnt--;
-        }else {
+        } else {
             if(direcao == 0) {
                 (tmp->pai)->fEsq == NULL;
                 delete tmp;
                 qnt--;
-            }else{
+            } else {
                 (tmp->pai)->fDir == NULL;
                 delete tmp;
                 qnt--;
@@ -108,15 +107,40 @@ void Tree::remover(int valor)
 
     }
 
-    // o nó tem um filho apenas
-    else if(){
-
-    }
-
     // o nó tem dois filhos
-    else if(){
+    else if(tmp->fDir != NULL && tmp->fEsq != NULL) {
 
     }
+
+    // o nó tem um filho apenas
+    else {
+        if(tmp->fEsq != NULL) {
+            if(direcao == 0) {
+                (tmp->pai)->fEsq == tmp->fEsq;
+                (tmp->fEsq)->pai == tmp->pai;
+                delete tmp;
+                qnt--;
+            } else {
+                (tmp->pai)->fDir == tmp->fEsq;
+                (tmp->fEsq)->pai == tmp->pai;
+                delete tmp;
+                qnt--;
+            }
+        } else {        // tmp->fDir != NULL
+            if(direcao == 0) {
+                (tmp->pai)->fEsq == tmp->fDir;
+                (tmp->fDir)->pai == tmp->pai;
+                delete tmp;
+                qnt--;
+            } else {
+                (tmp->pai)->fDir == tmp->fDir;
+                (tmp->fDir)->pai == tmp->pai;
+                delete tmp;
+                qnt--;
+            }
+        }
+    }
+
 }
 
 void Tree::apresentar()
@@ -126,5 +150,6 @@ void Tree::apresentar()
 
 int  Tree::lerProfundidade()
 {
+    return 0;
 }
 

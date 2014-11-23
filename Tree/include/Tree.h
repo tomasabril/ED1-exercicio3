@@ -1,7 +1,7 @@
 #ifndef TREE_H
 #define TREE_H
 
-struct No{
+struct No {
     int dado;
     //No * pai;
     No * fDir;
@@ -11,19 +11,19 @@ struct No{
 
 class Tree
 {
-    public:
-        No * topo;
-        int profundidade;
-        int qnt;
+public:
+    No * topo;
+    int profundidade;
+    int qnt;
 
 
-        Tree();
-        void inserir(int valor);
-        void remover(int valor);
-        void apresentar();
-        int  lerProfundidade();
-    protected:
-    private:
+    Tree();
+    void inserir(int valor);
+    void remover(int valor);
+    void apresentar();
+    int  lerProfundidade();
+protected:
+private:
 };
 
 #endif // TREE_H
