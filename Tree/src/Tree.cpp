@@ -81,7 +81,7 @@ void Tree::remover(int valor)
                 break;
             }
         } else if(valor == tmp->dado) {
-            // tmp й o nу a ser removido
+            // tmp e o no a ser removido
             break;
         }
 
@@ -110,7 +110,21 @@ void Tree::remover(int valor)
 
     // o no tem dois filhos
     else if(tmp->fDir != NULL && tmp->fEsq != NULL) {
-
+        // remocao por copia
+        No * node = tmp;
+        No * temp = node->fEsq;
+        No * prev = node;
+        while(temp->fDir != NULL) {
+            prev = temp;
+            temp = temp->fDir;
+        }
+        node->dado = temp->dado;
+        if(prev == node) {
+            prev->fEsq = temp->fEsq;
+        } else {
+            prev->fDir = temp->fEsq;
+        }
+        delete temp;
     }
 
     // o no tem um filho apenas
@@ -147,6 +161,7 @@ void Tree::remover(int valor)
 void Tree::apresentar()
 {
     // por percurso por largura e extensão
+
     std::queue<No*> lista;
     lista.push(topo);
     cout << " Raiz: " << topo->dado;
