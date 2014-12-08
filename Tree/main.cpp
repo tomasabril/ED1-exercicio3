@@ -23,6 +23,7 @@ using namespace std;
 
 int main()
 {
+    /*  // teste
     Tree tree;
     tree.inserir(15);
     tree.inserir(4);
@@ -31,5 +32,8 @@ int main()
     tree.inserir(16);
     tree.inserir(25);
     tree.apresentar();
+    */
+
+
     return 0;
 }

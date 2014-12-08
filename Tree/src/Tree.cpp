@@ -110,7 +110,7 @@ void Tree::remover(int valor)
 
     // o no tem dois filhos
     else if(tmp->fDir != NULL && tmp->fEsq != NULL) {
-        // remocao por copia
+        // remocao por COPIA __
         No * node = tmp;
         No * temp = node->fEsq;
         No * prev = node;
@@ -119,11 +119,22 @@ void Tree::remover(int valor)
             temp = temp->fDir;
         }
         node->dado = temp->dado;
-        if(prev == node) {
-            prev->fEsq = temp->fEsq;
+        if(prev->dado == node->dado) {
+            if(temp->fEsq != NULL) {
+                prev->fEsq = temp->fEsq;
+                (temp->fEsq)->pai = prev;
+            } else {
+                prev->fDir = NULL;
+            }
         } else {
-            prev->fDir = temp->fEsq;
+            if(temp->fEsq != NULL) {
+                prev->fDir = temp->fEsq;
+                (temp->fEsq)->pai = prev;
+            } else {
+                prev->fDir = NULL;
+            }
         }
+
         delete temp;
     }
 
