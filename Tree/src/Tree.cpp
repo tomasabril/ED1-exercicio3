@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 #include "../include/Tree.h"
 
 using namespace std;
@@ -25,7 +26,7 @@ void Tree::inserir(int valor)
         tmp = topo;
         while(1) {
             if(valor == tmp->dado) {
-                cout << "\n esse valor já existe na arvore! \n";
+                cout << "\n esse valor ja existe na arvore! \n";
                 break;
             } else {
                 if(valor < tmp->dado && tmp->fEsq == NULL) {
@@ -56,10 +57,10 @@ void Tree::inserir(int valor)
 
 void Tree::remover(int valor)
 {
-    // busca do nó a ser removido
+    // busca do no a ser removido
     No *tmp = new No;
     tmp = topo;
-    bool direcao;   // 0 é esquerda // 1 é direita;
+    bool direcao;   // 0 e esquerda // 1 e direita;
 
     while(1) {
         if(valor < tmp->dado) {
@@ -80,7 +81,7 @@ void Tree::remover(int valor)
                 break;
             }
         } else if(valor == tmp->dado) {
-            // tmp é o nó a ser removido
+            // tmp Ð¹ o nÑƒ a ser removido
             break;
         }
 
@@ -88,7 +89,7 @@ void Tree::remover(int valor)
     //No * aRemover = new No;
     //aRemover = tmp;
 
-    // o nó é uma folha e nao tem filhos
+    // o no e uma folha e nao tem filhos
     if(tmp->fDir == NULL && tmp->fEsq == NULL) {
         if(tmp->pai == NULL) {  // remover o topo
             delete tmp;
@@ -107,12 +108,12 @@ void Tree::remover(int valor)
 
     }
 
-    // o nó tem dois filhos
+    // o no tem dois filhos
     else if(tmp->fDir != NULL && tmp->fEsq != NULL) {
 
     }
 
-    // o nó tem um filho apenas
+    // o no tem um filho apenas
     else {
         if(tmp->fEsq != NULL) {
             if(direcao == 0) {
@@ -142,26 +143,59 @@ void Tree::remover(int valor)
     }
 
 }
-// por percurso por largura e extenção
+
 void Tree::apresentar()
 {
-   cout << "raiz!" << topo->dado << "FE" << (topo->fEsq)->dado << "FD" << (topo->fDir)->dado;
-   cout << "\n";
-     No * no = new No;
-     no = topo;
-     while()
-    {
+    // por percurso por largura e extensÃ£o
+    std::queue<No*> lista;
+    lista.push(topo);
+    cout << " Raiz: " << topo->dado
+         << " FE: " << (topo->fEsq)->dado
+         << " FD: " << (topo->fDir)->dado
+         << "\n";
+    No * tmp = new No;
+    tmp=topo;
+    while(!lista.empty()) {
+        if(tmp->fEsq != NULL) {
+            lista.push(tmp->fEsq);
+            cout << " No: " << (tmp->fEsq)->dado;
+            if( ((tmp->fEsq)->fEsq) != NULL ) {
+                cout << " FE: " << ((tmp->fEsq)->fEsq)->dado;
+            } else {
+                cout << " FE: -1";
+            }
+            if( ((tmp->fEsq)->fDir) != NULL ) {
+                cout << " FD: " << ((tmp->fEsq)->fDir)->dado;
+            } else {
+                cout << " FD: -1";
+            }
+            cout << "\n";
+        }
+        if(tmp->fDir != NULL) {
+            lista.push(tmp->fDir);
+            cout << " No: " << (tmp->fDir)->dado;
+            if( ((tmp->fDir)->fEsq) != NULL) {
+                cout << " FE: " << ((tmp->fDir)->fEsq)->dado;
+            } else {
+                cout << " FE: -1";
+            }
+            if( ((tmp->fDir)->fDir) != NULL ) {
+                cout << " FD: " << ((tmp->fDir)->fDir)->dado;
+            } else {
+                cout << " FD: -1";
+            }
+            cout << "\n";
+        }
 
+        tmp = lista.front();
+        lista.pop();
+    }
 
-
-     }
-
-
-
+    //allan
+    /*cout << "raiz!" << topo->dado << "FE" << (topo->fEsq)->dado << "FD" << (topo->fDir)->dado;
+    cout << "\n";
+    No * no = new No;
+    no = topo;
+    while() {
+    }*/
 }
-
-int  Tree::lerProfundidade()
-{
-    return 0;
-}
-

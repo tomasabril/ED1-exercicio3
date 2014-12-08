@@ -24,6 +24,12 @@ using namespace std;
 int main()
 {
     Tree tree;
-    tree.inserir(6);
+    tree.inserir(15);
+    tree.inserir(4);
+    tree.inserir(20);
+    tree.inserir(1);
+    tree.inserir(16);
+    tree.inserir(25);
+    tree.apresentar();
     return 0;
 }

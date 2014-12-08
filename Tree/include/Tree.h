@@ -21,7 +21,6 @@ public:
     void inserir(int valor);
     void remover(int valor);
     void apresentar();
-    int  lerProfundidade();
 protected:
 private:
 };
