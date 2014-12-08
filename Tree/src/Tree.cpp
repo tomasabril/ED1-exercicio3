@@ -142,9 +142,21 @@ void Tree::remover(int valor)
     }
 
 }
-
+// por percurso por largura e extenção
 void Tree::apresentar()
 {
+   cout << "raiz!" << topo->dado << "FE" << (topo->fEsq)->dado << "FD" << (topo->fDir)->dado;
+   cout << "\n";
+     No * no = new No;
+     no = topo;
+     while()
+    {
+
+
+
+     }
+
+
 
 }
 
