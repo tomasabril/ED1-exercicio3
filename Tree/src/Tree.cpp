@@ -149,10 +149,18 @@ void Tree::apresentar()
     // por percurso por largura e extensão
     std::queue<No*> lista;
     lista.push(topo);
-    cout << " Raiz: " << topo->dado
-         << " FE: " << (topo->fEsq)->dado
-         << " FD: " << (topo->fDir)->dado
-         << "\n";
+    cout << " Raiz: " << topo->dado;
+    if( topo->fEsq != NULL ) {
+        cout << " FE: " << (topo->fEsq)->dado;
+    } else {
+        cout << " FE: -1";
+    }
+    if( topo->fDir != NULL ) {
+        cout << " FD: " << (topo->fDir)->dado;
+    } else {
+        cout << " FD: -1";
+    }
+    cout << "\n";
     No * tmp = new No;
     tmp=topo;
     while(!lista.empty()) {
@@ -187,15 +195,8 @@ void Tree::apresentar()
             cout << "\n";
         }
 
-        tmp = lista.front();
         lista.pop();
+        tmp = lista.front();
     }
 
-    //allan
-    /*cout << "raiz!" << topo->dado << "FE" << (topo->fEsq)->dado << "FD" << (topo->fDir)->dado;
-    cout << "\n";
-    No * no = new No;
-    no = topo;
-    while() {
-    }*/
 }
