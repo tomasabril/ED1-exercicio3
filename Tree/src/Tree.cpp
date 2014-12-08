@@ -61,6 +61,7 @@ void Tree::remover(int valor)
     No *tmp = new No;
     tmp = topo;
     bool direcao;   // 0 e esquerda // 1 e direita;
+    bool achou = false;
 
     while(1) {
         if(valor < tmp->dado) {
@@ -82,91 +83,91 @@ void Tree::remover(int valor)
             }
         } else if(valor == tmp->dado) {
             // tmp e o no a ser removido
+            achou = true;
             break;
         }
 
     }
-    //No * aRemover = new No;
-    //aRemover = tmp;
 
-    // o no e uma folha e nao tem filhos
-    if(tmp->fDir == NULL && tmp->fEsq == NULL) {
-        if(tmp->pai == NULL) {  // remover o topo
-            delete tmp;
-            qnt--;
-        } else {
-            if(direcao == 0) {
-                (tmp->pai)->fEsq == NULL;
+    if(achou) {
+        // o no e uma folha e nao tem filhos
+        if(tmp->fDir == NULL && tmp->fEsq == NULL) {
+            if(tmp->pai == NULL) {  // remover o topo
                 delete tmp;
                 qnt--;
             } else {
-                (tmp->pai)->fDir == NULL;
-                delete tmp;
-                qnt--;
+                if(direcao == 0) {
+                    (tmp->pai)->fEsq == NULL;
+                    delete tmp;
+                    qnt--;
+                } else {
+                    (tmp->pai)->fDir == NULL;
+                    delete tmp;
+                    qnt--;
+                }
             }
+
         }
 
+        // o no tem dois filhos
+        else if(tmp->fDir != NULL && tmp->fEsq != NULL) {
+            // remocao por COPIA __
+            No * node = tmp;
+            No * temp = node->fEsq;
+            No * prev = node;
+            while(temp->fDir != NULL) {
+                prev = temp;
+                temp = temp->fDir;
+            }
+            node->dado = temp->dado;
+            if(prev->dado == node->dado) {
+                if(temp->fEsq != NULL) {
+                    prev->fEsq = temp->fEsq;
+                    (temp->fEsq)->pai = prev;
+                } else {
+                    prev->fDir = NULL;
+                }
+            } else {
+                if(temp->fEsq != NULL) {
+                    prev->fDir = temp->fEsq;
+                    (temp->fEsq)->pai = prev;
+                } else {
+                    prev->fDir = NULL;
+                }
+            }
+
+            delete temp;
+        }
+
+        // o no tem um filho apenas
+        else {
+            if(tmp->fEsq != NULL) {
+                if(direcao == 0) {
+                    (tmp->pai)->fEsq == tmp->fEsq;
+                    (tmp->fEsq)->pai == tmp->pai;
+                    delete tmp;
+                    qnt--;
+                } else {
+                    (tmp->pai)->fDir == tmp->fEsq;
+                    (tmp->fEsq)->pai == tmp->pai;
+                    delete tmp;
+                    qnt--;
+                }
+            } else {        // tmp->fDir != NULL
+                if(direcao == 0) {
+                    (tmp->pai)->fEsq == tmp->fDir;
+                    (tmp->fDir)->pai == tmp->pai;
+                    delete tmp;
+                    qnt--;
+                } else {
+                    (tmp->pai)->fDir == tmp->fDir;
+                    (tmp->fDir)->pai == tmp->pai;
+                    delete tmp;
+                    qnt--;
+                }
+            }
+        }
     }
-
-    // o no tem dois filhos
-    else if(tmp->fDir != NULL && tmp->fEsq != NULL) {
-        // remocao por COPIA __
-        No * node = tmp;
-        No * temp = node->fEsq;
-        No * prev = node;
-        while(temp->fDir != NULL) {
-            prev = temp;
-            temp = temp->fDir;
-        }
-        node->dado = temp->dado;
-        if(prev->dado == node->dado) {
-            if(temp->fEsq != NULL) {
-                prev->fEsq = temp->fEsq;
-                (temp->fEsq)->pai = prev;
-            } else {
-                prev->fDir = NULL;
-            }
-        } else {
-            if(temp->fEsq != NULL) {
-                prev->fDir = temp->fEsq;
-                (temp->fEsq)->pai = prev;
-            } else {
-                prev->fDir = NULL;
-            }
-        }
-
-        delete temp;
-    }
-
-    // o no tem um filho apenas
-    else {
-        if(tmp->fEsq != NULL) {
-            if(direcao == 0) {
-                (tmp->pai)->fEsq == tmp->fEsq;
-                (tmp->fEsq)->pai == tmp->pai;
-                delete tmp;
-                qnt--;
-            } else {
-                (tmp->pai)->fDir == tmp->fEsq;
-                (tmp->fEsq)->pai == tmp->pai;
-                delete tmp;
-                qnt--;
-            }
-        } else {        // tmp->fDir != NULL
-            if(direcao == 0) {
-                (tmp->pai)->fEsq == tmp->fDir;
-                (tmp->fDir)->pai == tmp->pai;
-                delete tmp;
-                qnt--;
-            } else {
-                (tmp->pai)->fDir == tmp->fDir;
-                (tmp->fDir)->pai == tmp->pai;
-                delete tmp;
-                qnt--;
-            }
-        }
-    }
-
 }
 
 void Tree::apresentar()

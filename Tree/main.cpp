@@ -34,6 +34,36 @@ int main()
     tree.apresentar();
     */
 
+    int op;
+    int valor;
+    Tree * tree = new Tree;
+
+    cout << " -- Arvore binaria --\n";
+    while(1) {
+        cout << "\n   _Menu_\n";
+        cout << " 1) Insercao em arvore binaria\n";
+        cout << " 2) Remocao em arvore binaria \n";
+        cout << " 3) Apresentacao da arvore\n";
+        cin >> op;
+
+        switch(op) {
+        case 1:
+            cout << "\n digite valor para inserir: ";
+            cin >> valor;
+            (*tree).inserir(valor);
+            break;
+        case 2:
+            cout << "\n digite valor para remover: ";
+            cin >> valor;
+            (*tree).remover(valor);
+            break;
+        case 3:
+            (*tree).apresentar();
+            break;
+        default:
+            cout << "opção invalida\n";
+        }
+    }
 
     return 0;
 }

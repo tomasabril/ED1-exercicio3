@@ -9,13 +9,13 @@
 
 1416321868 c:\users\allan patrick\documents\github\ed1-exercicio3\tree\include\tree.h
 
-1418078394 source:d:\github\ed1-exercicio3\tree\main.cpp
+1418085980 source:d:\github\ed1-exercicio3\tree\main.cpp
 	<iostream>
 	"include/Tree.h"
 
 1418075098 d:\github\ed1-exercicio3\tree\include\tree.h
 
-1418085161 source:d:\github\ed1-exercicio3\tree\src\tree.cpp
+1418085943 source:d:\github\ed1-exercicio3\tree\src\tree.cpp
 	<iostream>
 	<queue>
 	"../include/Tree.h"
