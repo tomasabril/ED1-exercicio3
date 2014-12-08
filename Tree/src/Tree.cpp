@@ -135,8 +135,8 @@ void Tree::remover(int valor)
                     prev->fDir = NULL;
                 }
             }
-
             delete temp;
+            qnt--;
         }
 
         // o no tem um filho apenas

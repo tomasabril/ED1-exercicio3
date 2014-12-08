@@ -53,12 +53,20 @@ int main()
             (*tree).inserir(valor);
             break;
         case 2:
-            cout << "\n digite valor para remover: ";
-            cin >> valor;
-            (*tree).remover(valor);
+            if( (*tree).qnt > 0 ) {
+                cout << "\n digite valor para remover: ";
+                cin >> valor;
+                (*tree).remover(valor);
+            } else {
+                cout << "\n arvore vazia!\n";
+            }
             break;
         case 3:
-            (*tree).apresentar();
+            if( (*tree).qnt > 0 ) {
+                (*tree).apresentar();
+            } else {
+                cout << "\n arvore vazia!\n";
+            }
             break;
         default:
             cout << "opção invalida\n";
