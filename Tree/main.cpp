@@ -69,7 +69,7 @@ int main()
             }
             break;
         default:
-            cout << "opção invalida\n";
+            cout << "opcao invalida\n";
         }
     }
 
