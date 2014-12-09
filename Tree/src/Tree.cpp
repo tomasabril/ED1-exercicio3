@@ -125,6 +125,7 @@ void Tree::remover(int valor)
             if(tmp->pai == NULL)    // remover o topo
             {
                 delete tmp;
+                topo = NULL;
                 qnt--;
             }
             else
@@ -196,12 +197,14 @@ void Tree::remover(int valor)
                     (tmp->fEsq)->pai = NULL;
                     topo = tmp->fEsq;
                     delete tmp;
+                    qnt--;
                 }
                 else
                 {
                     (tmp->fDir)->pai = NULL;
                     topo = tmp->fDir;
                     delete tmp;
+                    qnt--;
                 }
             }
             else

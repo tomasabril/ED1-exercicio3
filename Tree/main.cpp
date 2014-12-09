@@ -62,6 +62,7 @@ int main()
             }
             break;
         case 3:
+            //cout << "\n quantidade " << (*tree).qnt << "\n";
             if( (*tree).qnt > 0 ) {
                 (*tree).apresentar();
             } else {

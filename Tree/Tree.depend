@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1418134507 source:c:\users\allan patrick\documents\github\ed1-exercicio3\tree\main.cpp
+1418136837 source:c:\users\allan patrick\documents\github\ed1-exercicio3\tree\main.cpp
 	<iostream>
 	"include/Tree.h"
 
-1418136134 source:c:\users\allan patrick\documents\github\ed1-exercicio3\tree\src\tree.cpp
+1418136972 source:c:\users\allan patrick\documents\github\ed1-exercicio3\tree\src\tree.cpp
 	<iostream>
 	<queue>
 	"../include/Tree.h"
