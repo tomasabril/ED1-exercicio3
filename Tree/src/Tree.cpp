@@ -65,7 +65,9 @@ void Tree::remover(int valor)
     bool achou = false;
 
     while(1) {
+        cout <<"entrei no while" << "\n";
         if(valor < tmp->dado) {
+            cout <<"\n valor < dado " << tmp->dado;
             if(tmp->fEsq != NULL) {
                 tmp = tmp->fEsq;
                 direcao = 0;
@@ -75,6 +77,7 @@ void Tree::remover(int valor)
             }
 
         } else if(valor > tmp->dado) {
+            cout <<"\n valor > dado " << tmp->dado;
             if(tmp->fDir != NULL) {
                 tmp = tmp->fDir;
                 direcao = 1;
@@ -85,6 +88,7 @@ void Tree::remover(int valor)
         } else if(valor == tmp->dado) {
             // tmp e o no a ser removido
             achou = true;
+            cout <<"\n achei " << tmp->dado << "\n";
             break;
         }
 
