@@ -11,6 +11,7 @@ Tree::Tree()
     qnt = 0;
 }
 
+
 void Tree::inserir(int valor)
 {
     No * no = new No;
