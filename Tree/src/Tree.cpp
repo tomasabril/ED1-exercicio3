@@ -118,23 +118,23 @@ void Tree::remover(int valor)
             No * node = tmp;
             No * temp = node->fEsq;
             No * prev = node;
-            while(temp->fDir != NULL) {
+            while(temp->fDir != NULL) {     // acha o no a ser colocado no lugar
                 prev = temp;
                 temp = temp->fDir;
             }
             node->dado = temp->dado;
-            if(prev->dado == node->dado) {
+            if(prev->dado == node->dado) {      // se o no a ser movido e filho direto do no a ser apagado
                 if(temp->fEsq != NULL) {
                     prev->fEsq = temp->fEsq;
                     (temp->fEsq)->pai = prev;
-                } else {
-                    prev->fDir = NULL;
+                } else {                // temp->fEsq == NULL
+                    prev->fEsq = NULL;
                 }
             } else {
                 if(temp->fEsq != NULL) {
                     prev->fDir = temp->fEsq;
                     (temp->fEsq)->pai = prev;
-                } else {
+                } else {                // temp->fEsq == NULL
                     prev->fDir = NULL;
                 }
             }
