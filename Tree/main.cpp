@@ -13,13 +13,10 @@ Nó 28: FE: -1 FD: -1
 Nó 40: FE: -1 FD: -1
 Nó 5: FE: -1 FD:-1
 Nó 15: FE: -1 FD: -1
-
 */
 
 #include <iostream>
 #include "include/Tree.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 using namespace std;
 
